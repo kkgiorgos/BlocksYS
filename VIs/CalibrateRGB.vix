@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SourceFile Version="1.0.2.10" xmlns="http://www.ni.com/SourceModel.xsd">
+    <Namespace Name="Project">
+        <VirtualInstrument IsTopLevel="false" IsReentrant="false" Version="1.0.2.0" xmlns="http://www.ni.com/VirtualInstrument.xsd">
+            <DataItem Name="SequenceIn" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="2" AdaptToDiagramType="true" />
+            <DataItem Name="SequenceOut" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Input" CallUsage="None" CallDirection="Output" CallIndex="0" AdaptToDiagramType="true" />
+            <DataItem Name="MinRed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="1" />
+            <DataItem Name="MaxRed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="3" />
+            <DataItem Name="Port" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="0" />
+            <DataItem Name="MinGreen" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="7" />
+            <DataItem Name="MaxGreen" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="4" />
+            <DataItem Name="MinBlue" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="6" />
+            <DataItem Name="MaxBlue" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="5" />
+            <FrontPanel>
+                <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model:DesignerSurfaceProperties.CanSnapToObjects="True" Model:DesignerSurfaceProperties.SnapToObjects="True" Model:DesignerSurfaceProperties.ShowSnaplines="True" Model:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
+            </FrontPanel>
+            <BlockDiagram Name="__RootDiagram__">
+                <Wire Id="w8" Joints="N(n5:Out) N(n6:c1t0v)" />
+                <Wire Id="w12" Joints="N(n3:Numeric) N(n11:x)" />
+                <Wire Id="w13" Joints="N(n2:Numeric) h(6.642) N(n11:y) B(1) v(84) N(n24:x)" />
+                <Wire Id="w15" Joints="N(n11:x\-y) h(7) v(-7) N(n14:y)" />
+                <Wire Id="w16" Joints="N(n10:Out) h(7) v(7) N(n14:x)" />
+                <Wire Id="w19" Joints="N(n18:SequenceOut) h(7) v(14) h(-70) v(98) N(n16:SequenceIn)" />
+                <Wire Id="w21" Joints="N(n16:SequenceOut) h(7) v(14) h(-70) v(98) N(n21:SequenceIn)" />
+                <Wire Id="w23" Joints="N(n14:x\/y) N(n16:TextIn)" />
+                <Wire Id="w26" Joints="N(n25:Out) N(n24:y)" />
+                <Wire Id="w27" Joints="N(n24:x\*y) N(n21:TextIn)" />
+                <Wire Id="w29" Joints="N(n40:s\?\ t\:f) h(7) v(21) N(n6:c0t0v)" />
+                <Wire Id="w33" Joints="N(n7:Out) h(5) N(n8:y) B(1) v(-35) N(n12:y)" />
+                <Wire Id="w34" Joints="N(n32:Numeric) h(14) v(-35) N(n12:x) B(1) N(n8:x) B(1) v(28) h(49) v(-7) N(n40:f)" />
+                <Wire Id="w11" Joints="N(n8:x\ \&gt;\ y\?) N(n40:s)" />
+                <Wire Id="w36" Joints="N(n12:x\-y) v(21) N(n40:t)" />
+                <DataAccessor DataItem="MinRed" Id="n2" Bounds="273 280 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w13" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="MaxRed" Id="n3" Bounds="266 266 77 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w12" Hotspot="1 0.5" Bounds="0 0 77 14" />
+                </DataAccessor>
+                <Literal Id="n5" Terminals="Out=w8" Bounds="329 147 70 14" Interpretation="Exact" DataType="String">"RGBData"</Literal>
+                <ConcatenateStrings VerticalChunkCount="2" Id="n6" Terminals="outString=w37, c0t0v=w29, c1t0v=w8" Bounds="413 133 28 28" />
+                <Literal Id="n10" Terminals="Out=w16" Bounds="350 245 35 14" Interpretation="Exact" DataType="Double">255</Literal>
+                <Subtract Id="n11" Terminals="x\-y=w15, y=w13, x=w12" TopLeft="357 266" />
+                <Divide Id="n14" Terminals="x\/y=w23, y=w15, x=w16" TopLeft="406 252" />
+                <MethodCall Id="n16" Bounds="469 245 56 98" Target="FileWriteText\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="TextIn" Direction="Input" Wire="w23" DataType="String" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w19" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w21" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <MethodCall Id="n17" Bounds="1050 364 56 98" Target="FileClose\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w71" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <MethodCall Id="n18" Bounds="469 133 56 98" Target="FileDelete\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w19" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <MethodCall Id="n21" Bounds="469 357 56 98" Target="FileWriteText\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="TextIn" Direction="Input" Wire="w27" DataType="String" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w21" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w35" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <Multiply Id="n24" Terminals="x\*y=w27, y=w26, x=w13" TopLeft="357 364" />
+                <Literal Id="n25" Terminals="Out=w26" Bounds="315 378 28 14" Interpretation="Exact" DataType="Double">-1</Literal>
+                <DataAccessor DataItem="Port" Id="n32" Bounds="203 105 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w34" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <Literal Id="n7" Terminals="Out=w33" Bounds="238 119 35 14" Interpretation="Exact" DataType="Double">100</Literal>
+                <IsGreater Id="n8" Terminals="x\ \&gt;\ y\?=w11, y=w33, x=w34" TopLeft="301 105" />
+                <Select Id="n40" Terminals="s\?\ t\:f=w29, f=w34, s=w11, t=w36" TopLeft="371 98" />
+                <Subtract Id="n12" Terminals="x\-y=w36, y=w33, x=w34" TopLeft="329 70" />
+                <Wire Id="w37" Joints="N(n6:outString) h(7) v(112) v(112) N(n21:FileName) B(2) N(n16:FileName) B(1) v(-14) h(287) h(294) v(14) N(n64:FileName) B(9) v(112) v(119) N(n17:FileName) B(11) N(n55:FileName) B(7) v(14) N(n37:FileName) B(15) v(112) N(n51:FileName) B(1) N(n18:FileName)" />
+                <Wire Id="w35" Joints="N(n21:SequenceOut) h(14) v(-224) N(n37:SequenceIn)" />
+                <MethodCall Id="n37" Bounds="756 133 56 98" Target="FileWriteText\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="TextIn" Direction="Input" Wire="w44" DataType="String" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w35" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w43" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <Wire Id="w39" Joints="N(n47:Numeric) N(n49:x)" />
+                <Wire Id="w40" Joints="N(n46:Numeric) h(6.642) v(84) N(n52:x) B(1) N(n49:y)" />
+                <Wire Id="w41" Joints="N(n49:x\-y) h(7) v(-7) N(n50:y)" />
+                <Wire Id="w42" Joints="N(n48:Out) h(7) v(7) N(n50:x)" />
+                <Wire Id="w43" Joints="N(n37:SequenceOut) h(7) v(14) h(-70) v(98) N(n51:SequenceIn)" />
+                <Wire Id="w44" Joints="N(n50:x\/y) N(n37:TextIn)" />
+                <Wire Id="w45" Joints="N(n53:Out) N(n52:y)" />
+                <Wire Id="w46" Joints="N(n52:x\*y) N(n51:TextIn)" />
+                <DataAccessor DataItem="MinGreen" Id="n46" Bounds="546 168 84 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w40" Hotspot="1 0.5" Bounds="0 0 84 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="MaxGreen" Id="n47" Bounds="546 154 84 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w39" Hotspot="1 0.5" Bounds="0 0 84 14" />
+                </DataAccessor>
+                <Literal Id="n48" Terminals="Out=w42" Bounds="637 133 35 14" Interpretation="Exact" DataType="Double">255</Literal>
+                <Subtract Id="n49" Terminals="x\-y=w41, y=w40, x=w39" TopLeft="644 154" />
+                <Divide Id="n50" Terminals="x\/y=w44, y=w41, x=w42" TopLeft="693 140" />
+                <MethodCall Id="n51" Bounds="756 245 56 98" Target="FileWriteText\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="TextIn" Direction="Input" Wire="w46" DataType="String" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w43" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w54" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <Multiply Id="n52" Terminals="x\*y=w46, y=w45, x=w40" TopLeft="644 252" />
+                <Literal Id="n53" Terminals="Out=w45" Bounds="602 266 28 14" Interpretation="Exact" DataType="Double">-1</Literal>
+                <Wire Id="w54" Joints="N(n51:SequenceOut) h(21) v(-112) N(n64:SequenceIn)" />
+                <MethodCall Id="n55" Bounds="1050 245 56 98" Target="FileWriteText\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="TextIn" Direction="Input" Wire="w63" DataType="String" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w60" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w71" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <Wire Id="w56" Joints="N(n66:Numeric) N(n68:x)" />
+                <Wire Id="w57" Joints="N(n65:Numeric) h(6.642) N(n68:y) B(1) v(84) N(n70:x)" />
+                <Wire Id="w58" Joints="N(n68:x\-y) h(7) v(-7) N(n69:y)" />
+                <Wire Id="w59" Joints="N(n67:Out) h(7) v(7) N(n69:x)" />
+                <Wire Id="w60" Joints="N(n64:SequenceOut) h(7) v(14) h(-70) v(98) N(n55:SequenceIn)" />
+                <Wire Id="w61" Joints="N(n69:x\/y) N(n64:TextIn)" />
+                <Wire Id="w62" Joints="N(n71:Out) N(n70:y)" />
+                <Wire Id="w63" Joints="N(n70:x\*y) N(n55:TextIn)" />
+                <MethodCall Id="n64" Bounds="1050 133 56 98" Target="FileWriteText\.vix">
+                    <Terminal Id="FileName" Direction="Input" Wire="w37" DataType="String" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="TextIn" Direction="Input" Wire="w61" DataType="String" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="w54" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="w60" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                </MethodCall>
+                <DataAccessor DataItem="MinBlue" Id="n65" Bounds="854 168 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w57" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="MaxBlue" Id="n66" Bounds="847 154 77 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w56" Hotspot="1 0.5" Bounds="0 0 77 14" />
+                </DataAccessor>
+                <Literal Id="n67" Terminals="Out=w59" Bounds="931 133 35 14" Interpretation="Exact" DataType="Double">255</Literal>
+                <Subtract Id="n68" Terminals="x\-y=w58, y=w57, x=w56" TopLeft="938 154" />
+                <Divide Id="n69" Terminals="x\/y=w61, y=w58, x=w59" TopLeft="987 140" />
+                <Multiply Id="n70" Terminals="x\*y=w63, y=w62, x=w57" TopLeft="938 252" />
+                <Literal Id="n71" Terminals="Out=w62" Bounds="896 266 28 14" Interpretation="Exact" DataType="Double">-1</Literal>
+                <Wire Id="w71" Joints="N(n55:SequenceOut) h(7) v(21) h(-77) v(98) N(n17:SequenceIn)" />
+            </BlockDiagram>
+            <Icon>
+                <Model0:IconPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Model0="clr-namespace:NationalInstruments.LabVIEW.VI.Design;assembly=NationalInstruments.LabVIEW.VI.SourceModel" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:ation="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="112" Width="56">
+                    <fpruntime:AnimationProperties.Animations>
+                        <fpruntime:AnimationsContainer />
+                    </fpruntime:AnimationProperties.Animations>
+                    <fpruntime:EventProperties.Events>
+                        <fpruntime:EventContainer />
+                    </fpruntime:EventProperties.Events>
+                    <Model0:IconPanel.Background>
+                        <ation:LinearGradientBrush ation:StartPoint="0.5, 0" ation:EndPoint="0.5, 1">
+                            <ation:GradientStop ation:Color="#FFF6F5C6" />
+                            <ation:GradientStop ation:Color="#FFFFFFFE" ation:Offset="0.25" />
+                            <ation:GradientStop ation:Color="#FFF6F5C6" ation:Offset="1" />
+                            <ation:LinearGradientBrush.Transform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.Transform>
+                            <ation:LinearGradientBrush.RelativeTransform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.RelativeTransform>
+                        </ation:LinearGradientBrush>
+                    </Model0:IconPanel.Background>
+                    <ation:Rectangle x:Name="Template" Width="NaN" Height="NaN" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 13, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Fill="#00FFFFFF" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:Rectangle>
+                    <ation:Rectangle x:Name="Template2" Width="NaN" Height="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                        <ation:Rectangle.Fill>
+                            <ation:LinearGradientBrush ation:StartPoint="0.5, 0" ation:EndPoint="0.5, 1">
+                                <ation:GradientStop ation:Color="#FFFFFFFF" />
+                                <ation:GradientStop ation:Color="#FFD5EAEA" ation:Offset="1" />
+                                <ation:LinearGradientBrush.Transform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.Transform>
+                                <ation:LinearGradientBrush.RelativeTransform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.RelativeTransform>
+                            </ation:LinearGradientBrush>
+                        </ation:Rectangle.Fill>
+                    </ation:Rectangle>
+                    <ation:TextBlock x:Name="Template3" Width="NaN" Height="NaN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, -0.100000001490116, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Text="SubVI" FontFamily="Portable User Interface" FontSize="10" FontWeight="Normal" Foreground="#FF000000">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:TextBlock>
+                </Model0:IconPanel>
+            </Icon>
+        </VirtualInstrument>
+    </Namespace>
+</SourceFile>

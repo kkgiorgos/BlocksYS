@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SourceFile Version="1.0.2.10" xmlns="http://www.ni.com/SourceModel.xsd">
+    <Namespace Name="Project">
+        <VirtualInstrument IsTopLevel="false" IsReentrant="false" Version="1.0.2.0" xmlns="http://www.ni.com/VirtualInstrument.xsd">
+            <DataItem Name="W\/R" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="0" />
+            <DataItem Name="Pout" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="0" />
+            <DataItem Name="P" DataType="Single" DefaultTerminalDirection="Output" />
+            <DataItem Name="D" DataType="Single" DefaultTerminalDirection="Output" />
+            <DataItem Name="Dout" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="2" />
+            <DataItem Name="Speed" DataType="Single" DefaultTerminalDirection="Output" />
+            <DataItem Name="SpeedOut" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="3" />
+            <DataItem Name="PortL" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="4" />
+            <DataItem Name="motorL" DataType="Double" DefaultTerminalDirection="Output" AdaptToDiagramType="true" />
+            <DataItem Name="motorR" DataType="Double" DefaultTerminalDirection="Output" AdaptToDiagramType="true" />
+            <DataItem Name="PortR" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="5" />
+            <DataItem Name="InvL" DataType="Boolean" DefaultTerminalDirection="Output" />
+            <DataItem Name="InvR" DataType="Boolean" DefaultTerminalDirection="Output" />
+            <DataItem Name="InvLout" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="6" />
+            <DataItem Name="InvRout" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="7" />
+            <DataItem Name="InvRin" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="7" />
+            <DataItem Name="Pin" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="2" />
+            <DataItem Name="Din" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="4" />
+            <DataItem Name="SpeedIn" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="5" />
+            <DataItem Name="InvLin" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="6" />
+            <DataItem Name="PortsIn" DataType="Double" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="1" AdaptToDiagramType="true" />
+            <DataItem Name="Iin" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="3" />
+            <DataItem Name="Iout" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Output" CallIndex="1" />
+            <DataItem Name="I" DataType="Single" DefaultTerminalDirection="Output" />
+            <FrontPanel>
+                <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
+            </FrontPanel>
+            <BlockDiagram Name="__RootDiagram__">
+                <DataAccessor DataItem="W/R" Id="n1" Bounds="343 154 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w6" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <CaseStructure Id="n0" Bounds="490 112 315 203" DataType="Boolean" UserSelectorBounds="112.767 0 89.467 14" Selected="d1" Default="d0">
+                    <CaseStructure.Case Id="d0" Bounds="7 7 301 189" Pattern="False">
+                        <DataAccessor DataItem="Pout" Id="n8" Bounds="98 14 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w4" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="P" Id="n22" Bounds="14 14 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w4" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w4" Joints="N(n22:Value) N(n8:Numeric)" />
+                        <DataAccessor DataItem="D" Id="n21" Bounds="14 42 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w7" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="Dout" Id="n9" Bounds="98 42 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w7" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w7" Joints="N(n21:Value) N(n9:Numeric)" />
+                        <DataAccessor DataItem="Speed" Id="n23" Bounds="14 56 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w10" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="SpeedOut" Id="n19" Bounds="98 56 84 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w10" Hotspot="0 0.5" Bounds="0 0 84 14" />
+                        </DataAccessor>
+                        <Wire Id="w10" Joints="N(n23:Value) N(n19:Numeric)" />
+                        <DataAccessor DataItem="PortL" Id="n10" Bounds="98 70 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w13" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="motorL" Id="n26" Bounds="14 70 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w13" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w13" Joints="N(n26:Value) N(n10:Numeric)" />
+                        <DataAccessor DataItem="motorR" Id="n33" Bounds="14 84 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w16" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="PortR" Id="n11" Bounds="98 84 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w16" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w16" Joints="N(n33:Value) N(n11:Numeric)" />
+                        <DataAccessor DataItem="InvL" Id="n24" Bounds="14 98 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w20" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="InvR" Id="n25" Bounds="14 112 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w22" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="InvLout" Id="n12" Bounds="98 98 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w20" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w20" Joints="N(n24:Value) N(n12:Numeric)" />
+                        <DataAccessor DataItem="InvRout" Id="n13" Bounds="98 112 77 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w22" Hotspot="0 0.5" Bounds="0 0 77 14" />
+                        </DataAccessor>
+                        <Wire Id="w22" Joints="N(n25:Value) N(n13:Numeric)" />
+                        <DataAccessor DataItem="Iout" Id="n27" Bounds="98 28 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w24" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w24" Joints="N(n28:Value) N(n27:Numeric)" />
+                        <DataAccessor DataItem="I" Id="n28" Bounds="14 28 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w24" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                    </CaseStructure.Case>
+                    <CaseStructure.Case Id="d1" Bounds="7 7 301 189" Pattern="True">
+                        <DataAccessor DataItem="InvRin" Id="n7" Bounds="21 91 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w17" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="Pin" Id="n2" Bounds="21 21 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w9" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="Din" Id="n3" Bounds="21 49 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w11" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="SpeedIn" Id="n5" Bounds="14 63 77 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w13" Hotspot="1 0.5" Bounds="0 0 77 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="InvLin" Id="n6" Bounds="21 77 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w15" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="P" Id="n14" Bounds="224 21 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w9" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w9" Joints="N(n2:Numeric) N(n14:Numeric)" />
+                        <DataAccessor DataItem="D" Id="n15" Bounds="224 49 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w11" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w11" Joints="N(n3:Numeric) N(n15:Numeric)" />
+                        <DataAccessor DataItem="Speed" Id="n16" Bounds="224 63 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w13" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w13" Joints="N(n5:Numeric) N(n16:Numeric)" />
+                        <DataAccessor DataItem="InvL" Id="n17" Bounds="224 77 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w15" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w15" Joints="N(n6:Numeric) N(n17:Numeric)" />
+                        <DataAccessor DataItem="InvR" Id="n18" Bounds="224 91 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w17" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w17" Joints="N(n7:Numeric) N(n18:Numeric)" />
+                        <DataAccessor DataItem="motorR" Id="n29" Bounds="224 105 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w25" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w7" Joints="N(n25:Numeric) h(21) v(35) N(n30:x) B(1) N(n24:x)" />
+                        <Wire Id="w19" Joints="N(n28:Out) h(7) N(n24:y) B(1) v(35) v(14) h(84) v(-7) N(n31:y) B(3) N(n30:y)" />
+                        <Wire Id="w20" Joints="N(n30:x\/y) N(n4:number)" />
+                        <Wire Id="w21" Joints="N(n4:nearest\ integer\ value) N(n31:x)" />
+                        <Wire Id="w16" Joints="N(n31:x\-y\*floor\(x\/y\)) N(n32:Numeric)" />
+                        <Wire Id="w25" Joints="N(n24:x\-y\*floor\(x\/y\)) N(n29:Numeric)" />
+                        <QuotientAndRemainder Id="n24" Terminals="x\-y\*floor\(x\/y\)=w25, y=w19, x=w7" TopLeft="119 105" />
+                        <DataAccessor DataItem="PortsIn" Id="n25" Bounds="21 105 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w7" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Literal Id="n28" Terminals="Out=w19" Bounds="63 119 28 14" Interpretation="Exact" DataType="Double">10</Literal>
+                        <Divide Id="n30" Terminals="x\/y=w20, y=w19, x=w7" TopLeft="119 140" />
+                        <QuotientAndRemainder Id="n31" Terminals="x\-y\*floor\(x\/y\)=w16, y=w19, x=w21" TopLeft="189 147" />
+                        <DataAccessor DataItem="motorL" Id="n32" Bounds="224 147 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w16" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <RoundToNearest Id="n4" Terminals="nearest\ integer\ value=w21, number=w20" TopLeft="154 147" />
+                        <DataAccessor DataItem="Iin" Id="n33" Bounds="21 35 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w33" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="I" Id="n34" Bounds="224 35 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w33" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w33" Joints="N(n33:Numeric) N(n34:Numeric)" />
+                    </CaseStructure.Case>
+                    <CaseStructure.Selector Id="b14" Terminals="n0=w6, d0, d1" TopLeft="0 42" />
+                </CaseStructure>
+                <Wire Id="w6" Joints="N(n1:Numeric) N(b14:n0)" />
+            </BlockDiagram>
+            <Icon>
+                <Model:IconPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Model="clr-namespace:NationalInstruments.LabVIEW.VI.Design;assembly=NationalInstruments.LabVIEW.VI.SourceModel" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:ation="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="112" Width="56">
+                    <fpruntime:AnimationProperties.Animations>
+                        <fpruntime:AnimationsContainer />
+                    </fpruntime:AnimationProperties.Animations>
+                    <fpruntime:EventProperties.Events>
+                        <fpruntime:EventContainer />
+                    </fpruntime:EventProperties.Events>
+                    <Model:IconPanel.Background>
+                        <ation:LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                            <ation:LinearGradientBrush.Transform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.Transform>
+                            <ation:LinearGradientBrush.RelativeTransform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.RelativeTransform>
+                            <ation:GradientStop Color="#FFF6F5C6" />
+                            <ation:GradientStop Color="#FFFFFFFE" Offset="0.25" />
+                            <ation:GradientStop Color="#FFF6F5C6" Offset="1" />
+                        </ation:LinearGradientBrush>
+                    </Model:IconPanel.Background>
+                    <ation:Rectangle x:Name="Template" Width="NaN" Height="NaN" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 13, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Fill="#00FFFFFF" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:Rectangle>
+                    <ation:Rectangle x:Name="Template2" Width="NaN" Height="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                        <ation:Rectangle.Fill>
+                            <ation:LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                <ation:LinearGradientBrush.Transform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.Transform>
+                                <ation:LinearGradientBrush.RelativeTransform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.RelativeTransform>
+                                <ation:GradientStop Color="#FFFFFFFF" />
+                                <ation:GradientStop Color="#FFD5EAEA" Offset="1" />
+                            </ation:LinearGradientBrush>
+                        </ation:Rectangle.Fill>
+                    </ation:Rectangle>
+                    <ation:TextBlock x:Name="Template3" Width="NaN" Height="NaN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, -0.100000001490116, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Text="SubVI" FontFamily="Portable User Interface" FontSize="10" FontWeight="Normal" Foreground="#FF000000">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                        <fpruntime:BuddyReferenceProperties.BuddyProperties>
+                            <fpruntime:BuddyProperties />
+                        </fpruntime:BuddyReferenceProperties.BuddyProperties>
+                    </ation:TextBlock>
+                </Model:IconPanel>
+            </Icon>
+        </VirtualInstrument>
+    </Namespace>
+</SourceFile>

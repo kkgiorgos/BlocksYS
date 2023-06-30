@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SourceFile Version="1.0.2.10" xmlns="http://www.ni.com/SourceModel.xsd">
+    <Namespace Name="Project">
+        <VirtualInstrument IsTopLevel="false" IsReentrant="false" Version="1.0.2.0" xmlns="http://www.ni.com/VirtualInstrument.xsd">
+            <DataItem Name="SequenceIn" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="2" AdaptToDiagramType="true" />
+            <DataItem Name="SequenceOut" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Input" CallUsage="None" CallDirection="Output" CallIndex="0" AdaptToDiagramType="true" />
+            <DataItem Name="Port" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="0" />
+            <DataItem Name="Direction" DataType="UInt32" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="1" />
+            <DataItem Name="i" DataType="Int32" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="3" />
+            <DataItem Name="Amount" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="4" />
+            <DataItem Name="Blue" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="1" />
+            <DataItem Name="Result" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="2" />
+            <DataItem Name="StartValue" DataType="Single" DefaultTerminalDirection="Output" AdaptToDiagramType="true" />
+            <FrontPanel>
+                <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
+            </FrontPanel>
+            <BlockDiagram Name="__RootDiagram__">
+                <DataAccessor DataItem="Port" Id="n1" Bounds="546 371 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w35" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="i" Id="n3" Bounds="623 476 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w16" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="Blue" Id="n5" Bounds="707 322 70 14">
+                    <Terminal Id="Numeric" Direction="Input" Wire="w21" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <Wire Id="w16" Joints="N(n3:Numeric) N(b17:n0)" />
+                <Wire Id="w22" Joints="N(b22:n0) N(b19:n34)" />
+                <Wire Id="w35" Joints="N(n1:Numeric) N(n17:Port)" />
+                <CaseStructure Id="n0" Bounds="721 350 149 154" DataType="Int32" UserSelectorBounds="15.997 0 117.007 14" Selected="d1" Default="d0">
+                    <CaseStructure.Case Id="d0" Bounds="7 7 135 140" Pattern="1, Default">
+                        <Wire Id="w3" Joints="N(b11:d0) N(b22:d0)" />
+                    </CaseStructure.Case>
+                    <CaseStructure.Case Id="d1" Bounds="7 7 135 140" Pattern="0">
+                        <DataAccessor DataItem="StartValue" Id="n20" Bounds="28 49 91 14">
+                            <Terminal Id="Value" Direction="Input" Wire="w3" Hotspot="0 0.5" Bounds="0 0 91 14" />
+                        </DataAccessor>
+                        <Wire Id="w3" Joints="N(b11:d1) h(14) v(35) N(n20:Value) B(1) N(b22:d1)" />
+                    </CaseStructure.Case>
+                    <CaseStructure.Selector Id="b17" Terminals="n0=w16, d0, d1" TopLeft="0 126" />
+                    <CaseStructure.Tunnel Id="b22" Terminals="n0=w22, d0=w3, d1=w3" TopLeft="135 21" />
+                    <CaseStructure.Tunnel Id="b11" Terminals="n0=w21, d0=w3, d1=w3" TopLeft="0 21" />
+                </CaseStructure>
+                <FlatSequence Id="n34" Bounds="903 301 308 146">
+                    <FlatSequence.Frame Id="D35" Bounds="7 7 294 132">
+                        <Wire Id="w18" Joints="N(n2:Numeric) N(n23:Comparison)" />
+                        <Wire Id="w20" Joints="N(n25:Value) N(n23:StartValue)" />
+                        <Wire Id="w21" Joints="N(n4:Numeric) N(n23:Variance)" />
+                        <DataAccessor DataItem="StartValue" Id="n25" Bounds="7 21 91 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w20" Hotspot="1 0.5" Bounds="0 0 91 14" />
+                        </DataAccessor>
+                        <Wire Id="w22" Joints="N(b19:D35) N(n23:CurrentValue)" />
+                        <Wire Id="w13" Joints="N(n23:Result) N(n6:Numeric)" />
+                        <MethodCall Id="n23" Bounds="140 21 56 70" Target="CompareDelta\.vix">
+                            <Terminal Id="StartValue" Direction="Input" Wire="w20" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                            <Terminal Id="Comparison" Direction="Input" Wire="w18" DataType="Int32" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                            <Terminal Id="Variance" Direction="Input" Wire="w21" DataType="Single" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                            <Terminal Id="CurrentValue" Direction="Input" Wire="w22" DataType="Single" Hotspot="0 0.5" Bounds="0 42 14 14" />
+                            <Terminal Id="Result" Direction="Output" Wire="w13" DataType="Boolean" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                        </MethodCall>
+                        <DataAccessor DataItem="Amount" Id="n4" Bounds="28 49 70 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w21" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="Direction" Id="n2" Bounds="21 35 77 14">
+                            <Terminal Id="Numeric" Direction="Output" Wire="w18" Hotspot="1 0.5" Bounds="0 0 77 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="Result" Id="n6" Bounds="210 21 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w13" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                    </FlatSequence.Frame>
+                    <FlatSequence.Tunnel Id="b19" Terminals="n34=w22, D35=w22" TopLeft="0 70" />
+                </FlatSequence>
+                <MethodCall Id="n17" Bounds="630 371 56 56" Target="MeasureRAW_RGB\.vix">
+                    <Terminal Id="Port" Direction="Input" Wire="w35" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                    <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                    <Terminal Id="Green" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 14 14 14" />
+                    <Terminal Id="Blue" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 28 14 14" />
+                    <Terminal Id="Red" Direction="Output" Wire="w21" DataType="Single" Hotspot="1 0.5" Bounds="42 42 14 14" />
+                </MethodCall>
+                <Wire Id="w21" Joints="N(n17:Red) h(14) v(-42) v(-49) N(n5:Numeric) B(2) N(b11:n0)" />
+            </BlockDiagram>
+            <Icon>
+                <Model:IconPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Model="clr-namespace:NationalInstruments.LabVIEW.VI.Design;assembly=NationalInstruments.LabVIEW.VI.SourceModel" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:ation="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="70" Width="56">
+                    <fpruntime:AnimationProperties.Animations>
+                        <fpruntime:AnimationsContainer />
+                    </fpruntime:AnimationProperties.Animations>
+                    <fpruntime:EventProperties.Events>
+                        <fpruntime:EventContainer />
+                    </fpruntime:EventProperties.Events>
+                    <Model:IconPanel.Background>
+                        <ation:LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                            <ation:LinearGradientBrush.Transform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.Transform>
+                            <ation:LinearGradientBrush.RelativeTransform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.RelativeTransform>
+                            <ation:GradientStop Color="#FFF6F5C6" />
+                            <ation:GradientStop Color="#FFFFFFFE" Offset="0.25" />
+                            <ation:GradientStop Color="#FFF6F5C6" Offset="1" />
+                        </ation:LinearGradientBrush>
+                    </Model:IconPanel.Background>
+                    <ation:Rectangle x:Name="Template" Width="NaN" Height="NaN" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 13, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Fill="#00FFFFFF" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:Rectangle>
+                    <ation:Rectangle x:Name="Template2" Width="NaN" Height="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                        <ation:Rectangle.Fill>
+                            <ation:LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                <ation:LinearGradientBrush.Transform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.Transform>
+                                <ation:LinearGradientBrush.RelativeTransform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.RelativeTransform>
+                                <ation:GradientStop Color="#FFFFFFFF" />
+                                <ation:GradientStop Color="#FFD5EAEA" Offset="1" />
+                            </ation:LinearGradientBrush>
+                        </ation:Rectangle.Fill>
+                    </ation:Rectangle>
+                    <ation:TextBlock x:Name="Template3" Width="NaN" Height="NaN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, -0.100000001490116, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Text="SubVI" FontFamily="Portable User Interface" FontSize="10" FontWeight="Normal" Foreground="#FF000000">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:TextBlock>
+                </Model:IconPanel>
+            </Icon>
+        </VirtualInstrument>
+    </Namespace>
+</SourceFile>

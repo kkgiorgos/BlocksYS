@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Definition Type="Integer">
+	<Point Value="-1" Name="NoColor" ImageSuffix="_NoColor" />
+	<Point Value="0" Name="White" ImageSuffix="_White" />
+	<Point Value="1" Name="Black" ImageSuffix="_Black" />
+</Definition>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SourceFile Version="1.0.2.10" xmlns="http://www.ni.com/SourceModel.xsd">
+    <Namespace Name="Project">
+        <VirtualInstrument IsTopLevel="false" IsReentrant="false" Version="1.0.2.0" xmlns="http://www.ni.com/VirtualInstrument.xsd">
+            <DataItem Name="SequenceIn" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="2" AdaptToDiagramType="true" />
+            <DataItem Name="SequenceOut" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Input" CallUsage="None" CallDirection="Output" CallIndex="0" AdaptToDiagramType="true" />
+            <DataItem Name="Stop" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="0" />
+            <FrontPanel>
+                <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
+            </FrontPanel>
+            <BlockDiagram Name="__RootDiagram__">
+                <DataAccessor DataItem="Stop" Id="n1" Bounds="665 133 70 14">
+                    <Terminal Id="Numeric" Direction="Output" Wire="w18" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <MethodCall Id="n7" Bounds="385 98 56 112" Target="CoreData\.vix">
+                    <Terminal Id="W\/R" Direction="Input" Wire="w4" DataType="Boolean" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="PortsIn" Direction="Input" DataType="Double" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="WheelDiameter" Direction="Input" DataType="Single" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                    <Terminal Id="WheelDistance" Direction="Input" DataType="Single" Hotspot="0 0.5" Bounds="0 42 14 14" />
+                    <Terminal Id="InvLin" Direction="Input" DataType="Boolean" Hotspot="0 0.5" Bounds="0 56 14 14" />
+                    <Terminal Id="InvRin" Direction="Input" DataType="Boolean" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                    <Terminal Id="KpIn" Direction="Input" DataType="Single" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                    <Terminal Id="CircOut" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                    <Terminal Id="DistOut" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 14 14 14" />
+                    <Terminal Id="PortL" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 28 14 14" />
+                    <Terminal Id="PortR" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 42 14 14" />
+                    <Terminal Id="InvLout" Direction="Output" DataType="Boolean" Hotspot="1 0.5" Bounds="42 56 14 14" />
+                    <Terminal Id="InvRout" Direction="Output" DataType="Boolean" Hotspot="1 0.5" Bounds="42 70 14 14" />
+                    <Terminal Id="portsOut" Direction="Output" Wire="w10" DataType="Double" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                    <Terminal Id="KpOut" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 98 14 14" />
+                </MethodCall>
+                <Literal Facade="BooleanConstantFacade" Id="n3" Terminals="Out=w4" Bounds="357 98 14 14" Interpretation="Exact" DataType="Boolean">False</Literal>
+                <Wire Id="w4" Joints="N(n3:Out) N(n7:W\/R)" />
+                <Wire Id="w8" Joints="N(n50:layer) N(n30:layer)" />
+                <Wire Id="w7" Joints="N(n50:bitfield) N(n30:nos)" />
+                <Wire Id="w18" Joints="N(n1:Numeric) N(n30:brake)" />
+                <MethodCall Id="n30" Bounds="777 105 28 42" Target="X3\.Lib:PBrickOutputStop">
+                    <Terminal Id="layer" Direction="Input" Wire="w8" DataType="Byte" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="nos" Direction="Input" Wire="w7" DataType="Byte" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="brake" Direction="Input" Wire="w18" DataType="Boolean" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                </MethodCall>
+                <MethodCall Id="n50" Bounds="525 105 28 42" Target="X3\.Lib:PBrickPortConvertMotor">
+                    <Terminal Id="port" Direction="Input" Wire="w10" DataType="Int32" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="layer" Direction="Output" Wire="w8" DataType="SByte" Hotspot="1 0.5" Bounds="14 0 14 14" />
+                    <Terminal Id="bitfield" Direction="Output" Wire="w7" DataType="SByte" Hotspot="1 0.5" Bounds="14 14 14 14" />
+                    <Terminal Id="inverted" Direction="Output" DataType="Boolean" Hotspot="1 0.5" Bounds="14 28 14 14" />
+                </MethodCall>
+                <Wire Id="w10" Joints="N(n7:portsOut) h(77) v(-77) N(n50:port)" />
+            </BlockDiagram>
+        </VirtualInstrument>
+    </Namespace>
+</SourceFile>

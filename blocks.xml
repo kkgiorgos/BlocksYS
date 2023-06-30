@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EditorDefinitions>
+  <PolyGroups ModuleName="Blocks_YS" ModuleVersion="1.0.0">
+	<PolyGroup Name="YS_ColorSensor" BlockFamily="Sensor">
+      <Parameter Name="Port" CompilerDirectives="OneInputPort" Direction="Input" DefaultValue="1.3" />
+	  <Parameter Name="Color" Identification="builtin://Identification_MeasuredColor.png" ValueDisplay="Identification_MultiColor.xml" Configuration="Identification_MultiColor.xml" Direction="Output" DataType="Single" ModeCanSpecifyProperties="True" />
+	  <Parameter Name="MonoTone" Identification="builtin://Identification_MeasuredColor.png" ValueDisplay="Identification_MonoTone.xml" Configuration="Identification_MonoTone.xml" Direction="Output" DataType="Single" ModeCanSpecifyProperties="True" />
+      <Parameter Name="Light" Identification="builtin://Identification_MeasuredLight.png" DataType="Single" Direction="Output" />
+      <Parameter Name="Red" Identification="Identification_RedIcon.png" DataType="Single" Direction="Output" />
+      <Parameter Name="Green" Identification="Identification_GreenIcon.png" DataType="Single" Direction="Output" />
+      <Parameter Name="Blue" Identification="Identification_BlueIcon.png" DataType="Single" Direction="Output" />
+	  <Parameter Name="Hue" Identification="Identification_Hue.png" DataType="Single" Direction="Output" />
+      <Parameter Name="Saturation" Identification="Identification_Saturation.png" DataType="Single" Direction="Output" />
+      <Parameter Name="Brightness" Identification="Identification_Brightness.png" DataType="Single" Direction="Output" />
+      <Parameter Name="Comparison" Direction="Input" Configuration="builtin://Identification_ComparisonType.xml" Identification="builtin://Identification_ComparisonType.xml" DataType="Int32" DefaultValue="4" />
+      <Parameter Name="Threshold100" Identification="builtin://Identification_Threshold_UltrasonicInches.xml" DataType="Single" Direction="Input" DefaultValue="50" MinValue="0" MaxValue="100" />
+	  <Parameter Name="Threshold3072" Identification="Identification_Threshold_3072.xml" DataType="Single" Direction="Input" DefaultValue="1536" MinValue="0" MaxValue="3072" />
+	  <Parameter Name="Threshold255" Identification="builtin://Identification_Threshold_UltrasonicCm.xml" DataType="Single" Direction="Input" DefaultValue="100" MinValue="0" MaxValue="255" />
+	  <Parameter Name="Threshold1" Identification="Identification_Threshold_1.xml" DataType="Single" Direction="Input" DefaultValue="0.5" MinValue="0" MaxValue="1" />
+	  <Parameter Name="Threshold360" Identification="Identification_Threshold_360.xml" DataType="Single" Direction="Input" DefaultValue="100" MinValue="0" MaxValue="360" />
+	  <Parameter Name="Result" CompilerDirectives="Result" Identification="builtin://Identification_CompareResult.png" DataType="Boolean" Direction="Output" />
+	  <Parameter Name="Set_of_colors" Direction="Input" Configuration="Identification_MultiColor.xml" Identification="Identification_MultiColor.xml" DataType="Single[]" DefaultValue="[-1]" />
+	  <Parameter Name="Set_of_MonoTone" Direction="Input" Configuration="Identification_MonoTone.xml" Identification="Identification_MonoTone.xml" DataType="Single[]" DefaultValue="[-1]" />
+	  <Parameter Name="MinReflected" Identification="Identification_Min.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="3072"/>
+	  <Parameter Name="MaxReflected" Identification="Identification_Max.png" DataType="Single" Direction="Input" DefaultValue="3072" MinValue="0" MaxValue="3072"/>
+	  <Parameter Name="MinHue" Identification="Identification_MinHue.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="360"/>
+	  <Parameter Name="MinSaturation" Identification="Identification_MinSaturation.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="1"/>
+	  <Parameter Name="MinBrightness" Identification="Identification_MinBrightness.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="1"/>
+	  <Parameter Name="MaxHue" Identification="Identification_MaxHue.png" DataType="Single" Direction="Input" DefaultValue="360" MinValue="0" MaxValue="360"/>
+	  <Parameter Name="MaxSaturation" Identification="Identification_MaxSaturation.png" DataType="Single" Direction="Input" DefaultValue="1" MinValue="0" MaxValue="1"/>
+	  <Parameter Name="MaxBrightness" Identification="Identification_MaxBrightness.png" DataType="Single" Direction="Input" DefaultValue="1" MinValue="0" MaxValue="1"/>
+	  <Parameter Name="MinRed" Identification="Identification_MinRed.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="255"/>
+	  <Parameter Name="MinGreen" Identification="Identification_MinGreen.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="255"/>
+	  <Parameter Name="MinBlue" Identification="Identification_MinBlue.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="255"/>
+	  <Parameter Name="MaxRed" Identification="Identification_MaxRed.png" DataType="Single" Direction="Input" DefaultValue="255" MinValue="0" MaxValue="255"/>
+	  <Parameter Name="MaxGreen" Identification="Identification_MaxGreen.png" DataType="Single" Direction="Input" DefaultValue="255" MinValue="0" MaxValue="255"/>
+	  <Parameter Name="MaxBlue" Identification="Identification_MaxBlue.png" DataType="Single" Direction="Input" DefaultValue="255" MinValue="0" MaxValue="255"/>
+	  <Parameter Name="Direction" Direction="Input" DataType="UInt32" DefaultValue="2" Configuration="builtin://Identification_WaitForChange.xml" Identification="builtin://Identification_WaitForChange.xml" />
+	  <Parameter Name="Amount" Identification="builtin://Identification_Numeric.png" DataType="Single" Direction="Input" DefaultValue="10" />
+      <Parameter Name="i" CompilerDirectives="WaitForIteration" DataType="Int32" Direction="Input" DefaultValue="0" />
+	  <Hardware>
+	    <AlternativePolyGroupName>ColorSensor</AlternativePolyGroupName>
+        <NXTPlotColor>#ffff3132</NXTPlotColor>
+        <EV3PlotColor>#ff785028</EV3PlotColor>
+        <EV3AutoID>29</EV3AutoID>
+        <OtherAutoID>4</OtherAutoID>
+        <OtherAutoID>2</OtherAutoID>
+        <Direction>Input</Direction>
+        <DefaultPort>1.3</DefaultPort>
+      </Hardware>
+	  
+	  <Category Name="Adjusted">
+		<Block>
+		  <Mode>MeasureAdjustedReflected</Mode>
+		  <BlockInterface>Measure</BlockInterface>
+		  <Reference Type="VILib" Name="MeasureAdjustedReflected.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Light" />
+		  <PaletteInfo Weight = "1"/>
+		  <Flags></Flags>
+		  <Hardware></Hardware>
+		  <HardwareModeInfo Name="COL-REFLECT" ID="0" Range="0,100" Unit="%" />
+		</Block>
+		<Block>
+		  <Mode>MeasureAdjusted_RGB</Mode>
+		  <BlockInterface>Measure</BlockInterface>
+		  <Reference Type="VILib" Name="MeasureAdjusted_RGB.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Red" />
+		  <ParameterReference Name="Green" />
+		  <ParameterReference Name="Blue" />
+		  <Flags>PBROnly</Flags>
+		  <Hardware>NxtColor</Hardware>
+		  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		</Block>
+		<Block>
+		  <Mode>MeasureAdjusted_HSB</Mode>
+		  <BlockInterface>Measure</BlockInterface>
+		  <Reference Type="VILib" Name="MeasureAdjusted_HSB.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Hue" />
+		  <ParameterReference Name="Saturation" />
+		  <ParameterReference Name="Brightness" />
+		  <Flags>PBROnly</Flags>
+		  <Hardware>NxtColor</Hardware>
+		  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		</Block>
+		<Block>
+		  <Mode>MeasureAdjustedColor</Mode>
+		  <BlockInterface>Selector</BlockInterface>
+		  <Reference Type="VILib" Name="MeasureAdjustedColor.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Color" CompilerDirectives="Result" />
+		  <Flags>PBROnly</Flags>
+		  <Hardware>NxtColor</Hardware>
+		  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		</Block>
+		<Block>
+		  <Mode>MeasureAdjustedMonoTone</Mode>
+		  <BlockInterface>Selector</BlockInterface>
+		  <Reference Type="VILib" Name="MeasureAdjustedMonoTone.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="MonoTone" CompilerDirectives="Result" />
+		  <Flags>PBROnly</Flags>
+		  <Hardware>NxtColor</Hardware>
+		  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		</Block>
+		
+		<Block>
+		  <Mode>CompareAdjustedReflected</Mode>
+		  <BlockInterface>Compare</BlockInterface>
+		  <Reference Type="VILib" Name="CompareAdjustedReflected.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Comparison" />
+		  <ParameterReference Name="Threshold100" />
+		  <ParameterReference Name="Result" />
+		  <ParameterReference Name="Light" />
+		  <Flags></Flags>
+		  <Hardware></Hardware>
+		  <HardwareModeInfo Name="COL-REFLECT" ID="0" Range="0,100" Unit="%" />
+		</Block>
+		<Category Name="HSB">
+			<Block>
+			  <Mode>CompareHue</Mode>
+			  <BlockInterface>Compare</BlockInterface>
+			  <Reference Type="VILib" Name="CompareHue.vix" />
+			  <ParameterReference Name="Port" />
+			  <ParameterReference Name="Comparison" />
+			  <ParameterReference Name="Threshold360" />
+			  <ParameterReference Name="Result" />
+			  <ParameterReference Name="Hue" />
+			  <Flags>PBROnly</Flags>
+			  <Hardware>NxtColor</Hardware>
+			  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>	
+			<Block>
+			  <Mode>CompareSaturation</Mode>
+			  <BlockInterface>Compare</BlockInterface>
+			  <Reference Type="VILib" Name="CompareSaturation.vix" />
+			  <ParameterReference Name="Port" />
+			  <ParameterReference Name="Comparison" />
+			  <ParameterReference Name="Threshold1" />
+			  <ParameterReference Name="Result" />
+			  <ParameterReference Name="Saturation" />
+			  <Flags>PBROnly</Flags>
+			  <Hardware>NxtColor</Hardware>
+			  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+			<Block>
+			  <Mode>CompareBrightness</Mode>
+			  <BlockInterface>Compare</BlockInterface>
+			  <Reference Type="VILib" Name="CompareBrightness.vix" />
+			  <ParameterReference Name="Port" />
+			  <ParameterReference Name="Comparison" />
+			  <ParameterReference Name="Threshold1" />
+			  <ParameterReference Name="Result" />
+			  <ParameterReference Name="Brightness" />
+			  <Flags>PBROnly</Flags>
+			  <Hardware>NxtColor</Hardware>
+			  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+		</Category>
+		<Block>
+		  <Mode>CompareAdjustedColor</Mode>
+		  <BlockInterface>Compare</BlockInterface>
+		  <Reference Type="VILib" Name="CompareAdjustedColor.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Set_of_colors" />
+		  <ParameterReference Name="Result" />
+		  <ParameterReference Name="Color" />
+		  <Flags>PBROnly</Flags>
+		  <Hardware>NxtColor</Hardware>
+		  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		</Block>
+		<Block>
+		  <Mode>CompareAdjustedMonoTone</Mode>
+		  <BlockInterface>Compare</BlockInterface>
+		  <Reference Type="VILib" Name="CompareAdjustedMonoTone.vix" />
+		  <ParameterReference Name="Port" />
+		  <ParameterReference Name="Set_of_MonoTone" />
+		  <ParameterReference Name="Result" />
+		  <ParameterReference Name="MonoTone" />
+		  <Flags>PBROnly</Flags>
+		  <Hardware>NxtColor</Hardware>
+		  <HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		</Block>
+		
+		<Block>
+			<Mode>ChangeAdjustedReflected</Mode>
+			<Reference Type="VILib" Name="Change_ADJ_Reflected.vix" />
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="Direction" />
+			<ParameterReference Name="Amount" />
+			<ParameterReference Name="Light" />
+			<ParameterReference Name="Result" />
+			<ParameterReference Name="i" />
+			<BlockInterface>Change</BlockInterface>
+			<Flags></Flags>
+        </Block>
+		<Category Name="Change_HSB">
+			<Block>
+				<Mode>ChangeHue</Mode>
+				<Reference Type="VILib" Name="Change_Hue.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Direction" />
+				<ParameterReference Name="Amount" />
+				<ParameterReference Name="Hue" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="i" />
+				<BlockInterface>Change</BlockInterface>
+				<Flags></Flags>
+			</Block>
+			<Block>
+				<Mode>ChangeSaturation</Mode>
+				<Reference Type="VILib" Name="Change_Saturation.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Direction" />
+				<ParameterReference Name="Amount" />
+				<ParameterReference Name="Saturation" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="i" />
+				<BlockInterface>Change</BlockInterface>
+				<Flags></Flags>
+			</Block>
+			<Block>
+				<Mode>ChangeBrightness</Mode>
+				<Reference Type="VILib" Name="Change_Brightness.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Direction" />
+				<ParameterReference Name="Amount" />
+				<ParameterReference Name="Brightness" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="i" />
+				<BlockInterface>Change</BlockInterface>
+				<Flags></Flags>
+			</Block>
+		</Category>
+		<Block>
+			<Mode>ChangeMultiColor</Mode>
+			<Reference Type="VILib" Name="Change_MultiColor.vix" />
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="Color" />
+			<ParameterReference Name="Result" />
+			<ParameterReference Name="i" />
+			<BlockInterface>Change</BlockInterface>
+			<Flags></Flags>
+		</Block>
+		<Block>
+			<Mode>ChangeMonoTone</Mode>
+			<Reference Type="VILib" Name="Change_MonoTone.vix" />
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="MonoTone" />
+			<ParameterReference Name="Result" />
+			<ParameterReference Name="i" />
+			<BlockInterface>Change</BlockInterface>
+			<Flags></Flags>
+		</Block>
+	  </Category>
+	  
+	  <Category Name="RAW">
+		  <Block>
+			<Mode>MeasureRAWReflected</Mode>
+			<BlockInterface>Measure</BlockInterface>
+			<Reference Type="VILib" Name="MeasureRAWReflected.vix" />
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="Light" />
+			<Flags></Flags>
+			<Hardware></Hardware>
+			<HardwareModeInfo Name="COL-REFLECT" ID="0" Range="0,100" Unit="%" />
+		  </Block>
+		  <Block>
+			<Mode>MeasureRAW_RGB</Mode>
+			<Reference Type="VILib" Name="MeasureRAW_RGB.vix" />
+			<BlockInterface>Measure</BlockInterface>
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="Red" />
+			<ParameterReference Name="Green" />
+			<ParameterReference Name="Blue" />
+			<Flags>PBROnly</Flags>
+			<Hardware>NxtColor</Hardware>
+			<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+		  </Block>
+		  
+		  <Block>
+			<Mode>CompareRAWReflected</Mode>
+			<BlockInterface>Compare</BlockInterface>
+			<Reference Type="VILib" Name="CompareRAWReflected.vix" />
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="Comparison" />
+			<ParameterReference Name="Threshold3072" />
+			<ParameterReference Name="Result" />
+			<ParameterReference Name="Light" />
+			<Flags></Flags>
+			<Hardware></Hardware>
+			<HardwareModeInfo Name="COL-REFLECT" ID="0" Range="0,100" Unit="%" />
+		  </Block>
+		  <Category Name="RGB">
+			  <Block>
+				<Mode>CompareRed</Mode>
+				<BlockInterface>Compare</BlockInterface>
+				<Reference Type="VILib" Name="CompareRed.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Comparison" />
+				<ParameterReference Name="Threshold255" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="Red" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			  </Block>
+			  <Block>
+				<Mode>CompareGreen</Mode>
+				<BlockInterface>Compare</BlockInterface>
+				<Reference Type="VILib" Name="CompareGreen.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Comparison" />
+				<ParameterReference Name="Threshold255" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="Green" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			  </Block>
+			  <Block>
+				<Mode>CompareBlue</Mode>
+				<BlockInterface>Compare</BlockInterface>
+				<Reference Type="VILib" Name="CompareBlue.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Comparison" />
+				<ParameterReference Name="Threshold255" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="Blue" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			  </Block>
+		  </Category>
+		  
+		<Block>
+			<Mode>ChangeRAWReflected</Mode>
+			<Reference Type="VILib" Name="Change_RAW_Reflected.vix" />
+			<ParameterReference Name="Port" />
+			<ParameterReference Name="Direction" />
+			<ParameterReference Name="Amount" />
+			<ParameterReference Name="Light" />
+			<ParameterReference Name="Result" />
+			<ParameterReference Name="i" />
+			<BlockInterface>Change</BlockInterface>
+			<Flags></Flags>
+        </Block>
+		<Category Name="Change_RGB">
+			<Block>
+				<Mode>ChangeRed</Mode>
+				<Reference Type="VILib" Name="Change_Red.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Direction" />
+				<ParameterReference Name="Amount" />
+				<ParameterReference Name="Red" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="i" />
+				<BlockInterface>Change</BlockInterface>
+				<Flags></Flags>
+			</Block>
+			<Block>
+				<Mode>ChangeGreen</Mode>
+				<Reference Type="VILib" Name="Change_Green.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Direction" />
+				<ParameterReference Name="Amount" />
+				<ParameterReference Name="Green" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="i" />
+				<BlockInterface>Change</BlockInterface>
+				<Flags></Flags>
+			</Block>
+			<Block>
+				<Mode>ChangeBlue</Mode>
+				<Reference Type="VILib" Name="Change_Blue.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Direction" />
+				<ParameterReference Name="Amount" />
+				<ParameterReference Name="Blue" />
+				<ParameterReference Name="Result" />
+				<ParameterReference Name="i" />
+				<BlockInterface>Change</BlockInterface>
+				<Flags></Flags>
+			</Block>
+		</Category>
+	  </Category>
+	  
+	  <Category Name="Calibrate">
+		<Category Name="Reflected">
+			<Block>
+				<Mode>CalibrateReflected</Mode>
+				<Reference Type="VILib" Name="CalibrateReflected.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="MinReflected" />
+				<ParameterReference Name="MaxReflected" />
+				<Flags></Flags>
+				<Hardware></Hardware>
+				<HardwareModeInfo Name="COL-REFLECT" ID="0" Range="0,100" Unit="%" />
+			</Block>
+			<Block>
+				<Mode>CalibrateReflectedReset</Mode>
+				<Reference Type="VILib" Name="CalibrateReflectedReset.vix" />
+				<ParameterReference Name="Port" />
+				<Flags></Flags>
+				<Hardware></Hardware>
+				<HardwareModeInfo Name="COL-REFLECT" ID="0" Range="0,100" Unit="%" />
+			</Block>
+		</Category>
+		<Category Name="RGB">
+			<Block>
+				<Mode>CalibrateRGB</Mode>
+				<Reference Type="VILib" Name="CalibrateRGB.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="MinRed" />
+				<ParameterReference Name="MinGreen" />
+				<ParameterReference Name="MinBlue" />
+				<ParameterReference Name="MaxRed" />
+				<ParameterReference Name="MaxGreen" />
+				<ParameterReference Name="MaxBlue" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+			<Block>
+				<Mode>CalibrateRGBReset</Mode>
+				<Reference Type="VILib" Name="CalibrateRGBReset.vix" />
+				<ParameterReference Name="Port" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+		</Category>
+		<Category Name="Color">
+			<Block>
+				<Mode>CalibrateMonoTone</Mode>
+				<Reference Type="VILib" Name="CalibrateMonoTone.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Set_of_MonoTone" />
+				<ParameterReference Name="MinHue" />
+				<ParameterReference Name="MinSaturation" />
+				<ParameterReference Name="MinBrightness" />
+				<ParameterReference Name="MaxHue" />
+				<ParameterReference Name="MaxSaturation" />
+				<ParameterReference Name="MaxBrightness" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+			<Block>
+				<Mode>CalibrateMultiColor</Mode>
+				<Reference Type="VILib" Name="CalibrateMultiColor.vix" />
+				<ParameterReference Name="Port" />
+				<ParameterReference Name="Set_of_colors" />
+				<ParameterReference Name="MinHue" />
+				<ParameterReference Name="MinSaturation" />
+				<ParameterReference Name="MinBrightness" />
+				<ParameterReference Name="MaxHue" />
+				<ParameterReference Name="MaxSaturation" />
+				<ParameterReference Name="MaxBrightness" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+			<Block>
+				<Mode>CalibrateMonoToneReset</Mode>
+				<Reference Type="VILib" Name="CalibrateMonoToneReset.vix" />
+				<ParameterReference Name="Port" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+			<Block>
+				<Mode>CalibrateMultiColorReset</Mode>
+				<Reference Type="VILib" Name="CalibrateMultiColorReset.vix" />
+				<ParameterReference Name="Port" />
+				<Flags>PBROnly</Flags>
+				<Hardware>NxtColor</Hardware>
+				<HardwareModeInfo Name="RGB-RAW" ID="4" Range="0,255" Unit="" />
+			</Block>
+		</Category>
+	  </Category>
+	</PolyGroup>
+	<PolyGroup Name="YS_MotorPID" BlockFamily="Action">
+	  <Parameter Name="Ports" CompilerDirectives="TwoOutputPorts" Direction="Input" DefaultValue="1.C+B" />
+      <Parameter Name="Kp" Identification="KP.png" DataType="Single" Direction="Input" DefaultValue="0" />
+	  <Parameter Name="Ki" Identification="KI.png" DataType="Single" Direction="Input" DefaultValue="0" />
+      <Parameter Name="Kd" Identification="KD.png" DataType="Single" Direction="Input" DefaultValue="0" />
+	  <Parameter Name="Speed" Configuration="builtin://SliderVertical.custom" Identification="builtin://Identification_Speed.xml" DataType="Single" Direction="Input" DefaultValue="50" MinValue="-100" MaxValue="100"/>
+      <Parameter Name="LeftInversed" Identification="builtin://Identification_Invert.xml" Configuration="builtin://Identification_Invert.xml" DataType="Boolean" Direction="Input" DefaultValue="True" />
+      <Parameter Name="RightInversed" Identification="builtin://Identification_Invert.xml" Configuration="builtin://Identification_Invert.xml" DataType="Boolean" Direction="Input" DefaultValue="False" />
+	  <Parameter Name="S1" Identification="builtin://Identification_SensorPort_0.png" DataType="Single" Direction="Input" DefaultValue="0" />
+	  <Parameter Name="S2" Identification="builtin://Identification_SensorPort_1.png" DataType="Single" Direction="Input" DefaultValue="0" />
+	  <Parameter Name="Result" Identification="builtin://Identification_CompareResult.png" DataType="Single" Direction="Output" />
+	  <Hardware>
+		<EV3AutoID>7</EV3AutoID>
+        <OtherAutoID>8</OtherAutoID>
+        <Direction>Output</Direction>
+        <AlternativePolyGroupName>Motor</AlternativePolyGroupName>
+		<AlternativePolyGroupName>MediumMotor</AlternativePolyGroupName>
+        <DefaultPort>1.C+B</DefaultPort>
+      </Hardware>
+	  <Block>
+        <Mode>Configuration</Mode>
+        <Reference Type="VILib" Name="Conf.vix" />
+		<ParameterReference Name="Speed" />
+		<ParameterReference Name="Kp" />
+		<ParameterReference Name="Ki" />
+		<ParameterReference Name="Kd" />
+		<ParameterReference Name="LeftInversed" />
+		<ParameterReference Name="RightInversed" />
+		<ParameterReference Name="Ports" />
+        <PaletteInfo Weight="0" />
+      </Block>
+	  <Block>
+        <Mode>Controller</Mode>
+        <Reference Type="VILib" Name="Reg.vix" />
+		<ParameterReference Name="S1" />
+		<ParameterReference Name="S2" />
+      </Block>
+	  <Block>
+		<Mode>BasicController</Mode>
+		<Reference Type="VILib" Name="BaseReg.vix" />
+		<ParameterReference Name="S1" />
+		<ParameterReference Name="S2" />
+		<ParameterReference Name="Result" />
+	  </Block>
+    </PolyGroup>
+	<PolyGroup Name="YS_Move" BlockFamily="Action">
+	  <Parameter Name="Ports" CompilerDirectives="TwoOutputPorts" Direction="Input" DefaultValue="1.C+B" />
+      <Parameter Name="LeftInversed" Identification="builtin://Identification_Invert.xml" Configuration="builtin://Identification_Invert.xml" DataType="Boolean" Direction="Input" DefaultValue="True" />
+      <Parameter Name="RightInversed" Identification="builtin://Identification_Invert.xml" Configuration="builtin://Identification_Invert.xml" DataType="Boolean" Direction="Input" DefaultValue="False" />
+	  <Parameter Name="WheelDiameter" Identification="Identification_WheelDiameter.png" DataType="Single" Direction="Input" DefaultValue="6.24" />
+	  <Parameter Name="WheelDistance" Identification="Identification_WheelDistance.png" DataType="Single" Direction="Input" DefaultValue="17" />
+	  <Parameter Name="Kp" Identification="builtin://Identification_Pulse.png" DataType="Single" Direction="Input" DefaultValue="0.05"/>
+	  <Parameter Name="Speed" Configuration="builtin://SliderVertical.custom" Identification="builtin://Identification_Speed.xml" DataType="Single" Direction="Input" DefaultValue="50" MinValue="-100" MaxValue="100"/>
+	  <Parameter Name="LeftSpeed" Configuration="builtin://SliderVertical.custom" Identification="builtin://Identification_Speed.xml" DataType="Single" Direction="Input" DefaultValue="50" MinValue="-100" MaxValue="100"/>
+	  <Parameter Name="RightSpeed" Configuration="builtin://SliderVertical.custom" Identification="builtin://Identification_Speed.xml" DataType="Single" Direction="Input" DefaultValue="50" MinValue="-100" MaxValue="100"/>
+	  <Parameter Name="Seconds" Identification="builtin://Identification_Time.png" DataType="Single" Direction="Input" DefaultValue="5"/>
+	  <Parameter Name="Degrees" Identification="builtin://Identification_DegreesAngle.xml" DataType="Single" Direction="Input" DefaultValue="120"/>
+	  <Parameter Name="Stop" Direction="Input" DataType="Boolean" DefaultValue="True" Identification="builtin://Identification_BrakeAtEnd.xml" Configuration="builtin://Identification_BrakeAtEnd.xml" />
+	  <Parameter Name="ArcCenter" Identification="builtin://Identification_DistanceCM.png" DataType="Single" Direction="Input" DefaultValue="0" />
+	  <Parameter Name="ArcLength" Identification="builtin://Identification_DegreesAngle.xml" DataType="Single" Direction="Input" DefaultValue="90" />
+	  <Parameter Name="ArcDirection" Identification="Identification_Direction.xml" Configuration="Identification_Direction.xml" DataType="Single" Direction="Input" DefaultValue="1" />
+	  <Hardware>
+		<EV3AutoID>7</EV3AutoID>
+        <OtherAutoID>8</OtherAutoID>
+        <Direction>Output</Direction>
+        <AlternativePolyGroupName>Motor</AlternativePolyGroupName>
+		<AlternativePolyGroupName>MediumMotor</AlternativePolyGroupName>
+        <DefaultPort>1.C+B</DefaultPort>
+      </Hardware>
+	  
+	  <Block>
+        <Mode>Configuration</Mode>
+        <Reference Type="VILib" Name="Configure.vix" />
+		<ParameterReference Name="WheelDiameter" />
+		<ParameterReference Name="WheelDistance" />
+		<ParameterReference Name="LeftInversed" />
+		<ParameterReference Name="RightInversed" />
+		<ParameterReference Name="Kp" />
+		<ParameterReference Name="Ports" />
+        <PaletteInfo Weight="0.5" />
+      </Block>
+	  
+	  <Block>
+		<Mode>Stop</Mode>
+		<Reference Type="VILib" Name="Stop.vix"/>
+		<ParameterReference Name="Stop"/>
+	  </Block>
+	  
+	  <Category Name="Turns">
+		  <Block>
+			<Mode>Turn</Mode>
+			<Reference Type="VILib" Name="TurnDegrees.vix" />
+			<ParameterReference Name="Speed" />
+			<ParameterReference Name="ArcCenter" />
+			<ParameterReference Name="ArcLength" />
+		  </Block>
+		  <Block>
+			<Mode>TurnSeconds</Mode>
+			<Reference Type="VILib" Name="TurnSeconds.vix" />
+			<ParameterReference Name="Speed" />
+			<ParameterReference Name="ArcCenter" />
+			<ParameterReference Name="Seconds" />
+			<ParameterReference Name="ArcDirection" />
+		  </Block>
+		  <Block>
+			<Mode>TurnUnlimited</Mode>
+			<Reference Type="VILib" Name="TurnUnlimited.vix" />
+			<ParameterReference Name="Speed" />
+			<ParameterReference Name="ArcCenter" />
+			<ParameterReference Name="ArcDirection" />
+		  </Block>
+	  </Category>
+	  
+	  <Category Name="Travel">
+		<Block>
+			<Mode>MoveOn</Mode>
+			<Reference Type="VILib" Name="MoveOn.vix"/>
+			<ParameterReference Name="LeftSpeed"/>
+			<ParameterReference Name="RightSpeed"/>
+		</Block>
+		<Block>
+			<Mode>MoveDegrees</Mode>
+			<Reference Type="VILib" Name="MoveDegrees.vix"/>
+			<ParameterReference Name="LeftSpeed"/>
+			<ParameterReference Name="RightSpeed"/>
+			<ParameterReference Name="Degrees"/>
+			<ParameterReference Name="Stop"/>
+		</Block>
+		<Block>
+			<Mode>MoveSeconds</Mode>
+			<Reference Type="VILib" Name="MoveSeconds.vix"/>
+			<ParameterReference Name="LeftSpeed"/>
+			<ParameterReference Name="RightSpeed"/>
+			<ParameterReference Name="Seconds"/>
+			<ParameterReference Name="Stop"/>
+		</Block> 
+	  </Category>
+    </PolyGroup>
+  </PolyGroups>
+</EditorDefinitions>

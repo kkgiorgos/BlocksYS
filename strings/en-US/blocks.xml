@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EditorStrings>
+  <PolyGroups ModuleName="Blocks_YS">
+	<PolyGroup Name="YS_Move" DisplayName="YS Move" DisplayNamePrefix="YS">
+	  <Parameter Name="ArcCenter" DisplayName="Center of Arc"></Parameter>
+	  <Parameter Name="ArcLength" DisplayName="Length of Arc in Degrees"></Parameter>
+	  <Parameter Name="ArcDirection" DisplayName="Direction of Arc"></Parameter>
+	  <Parameter Name="LeftInversed" DisplayName="Left motor inversion"></Parameter>
+	  <Parameter Name="RightInversed" DisplayName="Right motor inversion"></Parameter>
+	  <Parameter Name="Speed" DisplayName="Speed"></Parameter>
+	  <Parameter Name="WheelDiameter" DisplayName="Diameter of Wheels"></Parameter>
+	  <Parameter Name="WheelDistance" DisplayName="Distance between Wheels"></Parameter>
+	  <Parameter Name="Ports" DisplayName="Motor Ports"></Parameter>
+	  <Parameter Name="LeftSpeed" DisplayName="Power Left"></Parameter>
+	  <Parameter Name="RightSpeed" DisplayName="Power Right"></Parameter>
+	  <Parameter Name="Kp" DisplayName="Proportional coeficient"></Parameter>
+	  <Parameter Name="Seconds" DisplayName="Seconds"></Parameter>
+	  <Parameter Name="Degrees" DisplayName="Degrees"></Parameter>
+	  <Parameter Name="Stop" DisplayName="Brake at End"></Parameter>
+	  
+	  <Block Mode="Configuration" DisplayName="Configuration"></Block> 
+	  <Block Mode="Stop" DisplayName="Off"></Block>
+	  <Category Name="Turns" DisplayName="Turn"></Category>
+	  <Block Mode="Turn" DisplayName="Turn for Degrees"></Block> 
+	  <Block Mode="TurnSeconds" DisplayName="Turn for Seconds"></Block> 
+	  <Block Mode="TurnUnlimited" DisplayName="Turn On"></Block> 
+	  <Category Name="Travel" DisplayName="Move"></Category>
+	  <Block Mode="MoveOn" DisplayName="On"></Block>
+	  <Block Mode="MoveDegrees" DisplayName="On for Degrees"></Block>
+	  <Block Mode="MoveSeconds" DisplayName="On for Seconds"></Block>
+    </PolyGroup>
+	<PolyGroup Name="YS_ColorSensor" DisplayName="Color Sensor YS" DisplayNamePrefix="YSColorSensor">
+      <Parameter Name="Port" DisplayName="Port"></Parameter>
+	  <Parameter Name="Color" DisplayName="Basic Colors"></Parameter>
+	  <Parameter Name="Light" DisplayName="Reflected Light"></Parameter>
+	  <Parameter Name="MonoTone" DisplayName="Black/White"></Parameter>
+	  <Parameter Name="Red" DisplayName="Red"></Parameter>
+	  <Parameter Name="Green" DisplayName="Green"></Parameter>
+	  <Parameter Name="Blue" DisplayName="Blue"></Parameter>
+	  <Parameter Name="Hue" DisplayName="Hue"></Parameter>
+	  <Parameter Name="Saturation" DisplayName="Saturation"></Parameter>
+	  <Parameter Name="Brightness" DisplayName="Brightness"></Parameter>
+	  <Parameter Name="Set_of_colors" DisplayName="Colors"></Parameter>
+	  <Parameter Name="Set_of_MonoTone" DisplayName="Colors"></Parameter>
+	  <Parameter Name="Comparison" DisplayName="Comparison"></Parameter>
+	  <Parameter Name="Threshold100" DisplayName="Threshold"></Parameter>
+	  <Parameter Name="Threshold3072" DisplayName="Threshold"></Parameter>
+	  <Parameter Name="Threshold255" DisplayName="Threshold"></Parameter>
+	  <Parameter Name="Threshold1" DisplayName="Threshold"></Parameter>
+	  <Parameter Name="Threshold360" DisplayName="Threshold"></Parameter>
+	  <Parameter Name="Result" DisplayName="Result"></Parameter>
+	  <Parameter Name="MinReflected" DisplayName="Min Reflected"></Parameter>
+	  <Parameter Name="MaxReflected" DisplayName="Max Reflected"></Parameter>
+	  <Parameter Name="MinHue" DisplayName="Min Hue"></Parameter>
+	  <Parameter Name="MinSaturation" DisplayName="Min Saturation"></Parameter>
+	  <Parameter Name="MinBrightness" DisplayName="Min Brightness"></Parameter>
+	  <Parameter Name="MaxHue" DisplayName="Max Hue"></Parameter>
+	  <Parameter Name="MaxSaturation" DisplayName="Max Saturation"></Parameter>
+	  <Parameter Name="MaxBrightness" DisplayName="Max Brightness"></Parameter>
+	  <Parameter Name="MinRed" DisplayName="Min Red"></Parameter>
+	  <Parameter Name="MinGreen" DisplayName="Min Green"></Parameter>
+	  <Parameter Name="MinBlue" DisplayName="Min Blue"></Parameter>
+	  <Parameter Name="MaxRed" DisplayName="Max Red"></Parameter>
+	  <Parameter Name="MaxGreen" DisplayName="Max Green"></Parameter>
+	  <Parameter Name="MaxBlue" DisplayName="Max Blue"></Parameter>
+	  <Parameter Name="Direction" DisplayName="Direction"></Parameter>
+	  <Parameter Name="Amount" DisplayName="Amount"></Parameter>
+	  
+	  <Category Name="RAW" DisplayName="RAW Values">
+		<Category Name="RGB" DisplayName="RGB"></Category>
+		<Category Name="Change_RGB" DisplayName="RGB"></Category>
+	  </Category>
+	  <Block Mode="MeasureRAWReflected" DisplayName="Reflected Light"></Block>
+	  <Block Mode="MeasureRAW_RGB" DisplayName="RGB"></Block>
+	  <Block Mode="CompareRAWReflected" DisplayName="Reflected Light"></Block>
+	  <Block Mode="CompareRed" DisplayName="Red"></Block>
+	  <Block Mode="CompareGreen" DisplayName="Green"></Block>
+	  <Block Mode="CompareBlue" DisplayName="Blue"></Block>
+	  <Block Mode="ChangeRAWReflected" DisplayName="Reflected Light"></Block>
+	  <Block Mode="ChangeRed" DisplayName="Red"></Block>
+	  <Block Mode="ChangeGreen" DisplayName="Green"></Block>
+	  <Block Mode="ChangeBlue" DisplayName="Blue"></Block>
+	  <Category Name="Adjusted" DisplayName="Adjusted Values">
+		<Category Name="HSB" DisplayName="HSB"></Category>
+		<Category Name="Change_HSB" DisplayName="HSB"></Category>
+	  </Category> 
+	  <Block Mode="MeasureAdjustedReflected" DisplayName="Reflected Light"></Block>
+	  <Block Mode="MeasureAdjusted_RGB" DisplayName="RGB"></Block>
+	  <Block Mode="MeasureAdjusted_HSB" DisplayName="HSB"></Block>
+	  <Block Mode="MeasureAdjustedColor" DisplayName="Color (4 Basic)"></Block>
+	  <Block Mode="MeasureAdjustedMonoTone" DisplayName="Color (Black/White)"></Block>
+	  <Block Mode="CompareAdjustedReflected" DisplayName="Reflected Light"></Block>
+	  <Block Mode="CompareAdjustedColor" DisplayName="Color (4 Basic)"></Block>
+	  <Block Mode="CompareAdjustedMonoTone" DisplayName="Color (Black/White)"></Block>
+	  <Block Mode="CompareHue" DisplayName="Hue"></Block>
+	  <Block Mode="CompareSaturation" DisplayName="Saturation"></Block>
+	  <Block Mode="CompareBrightness" DisplayName="Brightness"></Block>
+	  <Block Mode="ChangeAdjustedReflected" DisplayName="Reflected Light"></Block>
+	  <Block Mode="ChangeMultiColor" DisplayName="Color (4 Basic)"></Block>
+	  <Block Mode="ChangeMonoTone" DisplayName="Color (Black/White)"></Block>
+	  <Block Mode="ChangeHue" DisplayName="Hue"></Block>
+	  <Block Mode="ChangeSaturation" DisplayName="Saturation"></Block>
+	  <Block Mode="ChangeBrightness" DisplayName="Brightness"></Block>
+	  <Category Name="Calibrate" DisplayName="Calibration">
+		<Category Name="Reflected" DisplayName="Reflected Light"></Category>
+		<Category Name="RGB" DisplayName="RGB"></Category>
+		<Category Name="Color" DisplayName="Color"></Category>
+	  </Category> 
+	  <Block Mode="CalibrateReflected" DisplayName="Set Calibration Parameters"></Block>
+	  <Block Mode="CalibrateReflectedReset" DisplayName="Reset Calibration Parameters"></Block>
+	  <Block Mode="CalibrateRGB" DisplayName="Set RGB Calibration Parameters"></Block>
+	  <Block Mode="CalibrateRGBReset" DisplayName="Reset RGB Calibration Parameters"></Block>
+	  <Block Mode="CalibrateMonoTone" DisplayName="Set Black/White Calibration Parameters"></Block>
+	  <Block Mode="CalibrateMonoToneReset" DisplayName="Reset Black/White Calibration Parameters"></Block>
+	  <Block Mode="CalibrateMultiColor" DisplayName="Set Color Calibration Parameters"></Block>
+	  <Block Mode="CalibrateMultiColorReset" DisplayName="Reset Color Calibration Parameters"></Block>
+	</PolyGroup>
+	<PolyGroup Name="YS_MotorPID" DisplayName="YS PID Controller" DisplayNamePrefix="YS">
+	  <Parameter Name="Kp" DisplayName="Proportional coeficient"></Parameter>
+	  <Parameter Name="Ki" DisplayName="Integral coeficient"></Parameter>
+	  <Parameter Name="Kd" DisplayName="Derivative coeficient"></Parameter>
+	  <Parameter Name="LeftInversed" DisplayName="Left motor inversion"></Parameter>
+	  <Parameter Name="RightInversed" DisplayName="Right motor inversion"></Parameter>
+	  <Parameter Name="Speed" DisplayName="Speed"></Parameter>
+	  <Parameter Name="S1" DisplayName="Input value 1"></Parameter>
+	  <Parameter Name="S2" DisplayName="Input value 2"></Parameter>
+	  <Parameter Name="Result" DisplayName="Result"></Parameter>
+	  <Parameter Name="Ports" DisplayName="Motor Ports"></Parameter>
+	  
+	  <Block Mode="Controller" DisplayName="PID Controller (Motors)"></Block> 
+	  <Block Mode="Configuration" DisplayName="Controller configuration"></Block> 
+	  <Block Mode="BasicController" DisplayName="PID Controller"></Block>
+    </PolyGroup>
+  </PolyGroups>
+</EditorStrings>

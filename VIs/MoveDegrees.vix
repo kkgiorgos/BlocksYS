@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SourceFile Version="1.0.2.10" xmlns="http://www.ni.com/SourceModel.xsd">
+    <Namespace Name="Project">
+        <VirtualInstrument IsTopLevel="false" IsReentrant="false" Version="1.0.2.0" xmlns="http://www.ni.com/VirtualInstrument.xsd">
+            <DataItem Name="SequenceIn" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="2" AdaptToDiagramType="true" />
+            <DataItem Name="SequenceOut" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Input" CallUsage="None" CallDirection="Output" CallIndex="0" AdaptToDiagramType="true" />
+            <DataItem Name="TPright" DataType="Single" DefaultTerminalDirection="Output" DefaultValue="50" />
+            <DataItem Name="TPleft" DataType="Single" DefaultTerminalDirection="Output" DefaultValue="50" />
+            <DataItem Name="LeftSpeed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="0" DefaultValue="50" />
+            <DataItem Name="RightSpeed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="1" DefaultValue="50" />
+            <DataItem Name="Degrees" DataType="Single" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="3" DefaultValue="50" />
+            <DataItem Name="Stop" DataType="Boolean" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="4" DefaultValue="False" />
+            <DataItem Name="ports" DataType="Double" DefaultTerminalDirection="Output" DefaultValue="0" />
+            <DataItem Name="Kp" DataType="Single" DefaultTerminalDirection="Output" DefaultValue="0" />
+            <DataItem Name="portLeft" DataType="Single" DefaultTerminalDirection="Output" AdaptToDiagramType="true" />
+            <DataItem Name="portRight" DataType="Single" DefaultTerminalDirection="Output" AdaptToDiagramType="true" />
+            <FrontPanel>
+                <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
+            </FrontPanel>
+            <BlockDiagram Name="__RootDiagram__">
+                <FlatSequence Id="n43" Bounds="497 644 1148 406">
+                    <FlatSequence.Frame Id="D44" Bounds="7 7 350 392">
+                        <MethodCall Id="n35" Bounds="161 266 56 98" Target="RotationValue\.vix">
+                            <Terminal Id="MotorPort" Direction="Input" Wire="w38" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                            <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                            <Terminal Id="Degrees" Direction="Output" Wire="w36" DataType="Single" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                            <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                        </MethodCall>
+                        <Wire Id="w45" Joints="N(n46:Out) N(n44:W\/R)" />
+                        <Wire Id="w47" Joints="N(n44:InvLout) N(n57:s)" />
+                        <Wire Id="w48" Joints="N(n59:Out) h(14) v(49) N(n61:f) B(1) N(n57:f)" />
+                        <Wire Id="w51" Joints="N(n50:Value) N(n58:x)" />
+                        <Wire Id="w52" Joints="N(n60:Out) h(14) N(n57:t) B(1) v(49) N(n61:t)" />
+                        <Wire Id="w53" Joints="N(n57:s\?\ t\:f) h(7) v(-14) N(n58:y)" />
+                        <Wire Id="w54" Joints="N(n56:Value) N(n62:x)" />
+                        <Wire Id="w55" Joints="N(n61:s\?\ t\:f) N(n62:y)" />
+                        <Wire Id="w31" Joints="N(n44:InvRout) h(28) v(35) N(n61:s)" />
+                        <Wire Id="w32" Joints="N(n44:PortL) h(7) v(-119) N(n31:MotorPort) B(1) N(n15:Numeric)" />
+                        <Wire Id="w34" Joints="N(n31:Degrees) N(n33:Value)" />
+                        <Wire Id="w36" Joints="N(n35:Degrees) N(n37:Value)" />
+                        <Wire Id="w38" Joints="N(n44:PortR) h(14) h(21) v(112) N(n35:MotorPort) B(1) v(-28) N(n34:Numeric)" />
+                        <Wire Id="w40" Joints="N(n44:portsOut) h(7) v(35) h(-42) v(14) N(n39:Value)" />
+                        <Wire Id="w42" Joints="N(n44:KpOut) h(14) v(14) h(-56) v(42) N(n41:Value)" />
+                        <MethodCall Id="n44" Bounds="56 112 56 112" Target="CoreData\.vix">
+                            <Terminal Id="W\/R" Direction="Input" Wire="w45" DataType="Boolean" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                            <Terminal Id="PortsIn" Direction="Input" DataType="Double" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                            <Terminal Id="WheelDiameter" Direction="Input" DataType="Single" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                            <Terminal Id="WheelDistance" Direction="Input" DataType="Single" Hotspot="0 0.5" Bounds="0 42 14 14" />
+                            <Terminal Id="InvLin" Direction="Input" DataType="Boolean" Hotspot="0 0.5" Bounds="0 56 14 14" />
+                            <Terminal Id="InvRin" Direction="Input" DataType="Boolean" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                            <Terminal Id="KpIn" Direction="Input" DataType="Single" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                            <Terminal Id="CircOut" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                            <Terminal Id="DistOut" Direction="Output" DataType="Single" Hotspot="1 0.5" Bounds="42 14 14 14" />
+                            <Terminal Id="PortL" Direction="Output" Wire="w32" DataType="Single" Hotspot="1 0.5" Bounds="42 28 14 14" />
+                            <Terminal Id="PortR" Direction="Output" Wire="w38" DataType="Single" Hotspot="1 0.5" Bounds="42 42 14 14" />
+                            <Terminal Id="InvLout" Direction="Output" Wire="w47" DataType="Boolean" Hotspot="1 0.5" Bounds="42 56 14 14" />
+                            <Terminal Id="InvRout" Direction="Output" Wire="w31" DataType="Boolean" Hotspot="1 0.5" Bounds="42 70 14 14" />
+                            <Terminal Id="portsOut" Direction="Output" Wire="w40" DataType="Double" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                            <Terminal Id="KpOut" Direction="Output" Wire="w42" DataType="Single" Hotspot="1 0.5" Bounds="42 98 14 14" />
+                        </MethodCall>
+                        <Literal Facade="BooleanConstantFacade" Id="n46" Terminals="Out=w45" Bounds="28 112 14 14" Interpretation="Exact" DataType="Boolean">False</Literal>
+                        <DataAccessor DataItem="LeftSpeed" Id="n50" Bounds="217 140 84 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w51" Hotspot="1 0.5" Bounds="0 0 84 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="RightSpeed" Id="n56" Bounds="154 203 91 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w54" Hotspot="1 0.5" Bounds="0 0 91 14" />
+                        </DataAccessor>
+                        <Select Id="n57" Terminals="s\?\ t\:f=w53, f=w48, s=w47, t=w52" TopLeft="266 154" />
+                        <Multiply Id="n58" Terminals="x\*y=w37, y=w53, x=w51" TopLeft="308 140" />
+                        <Literal Id="n59" Terminals="Out=w48" Bounds="217 182 28 14" Interpretation="Exact" DataType="Double">1</Literal>
+                        <Literal Id="n60" Terminals="Out=w52" Bounds="217 154 28 14" Interpretation="Exact" DataType="Double">-1</Literal>
+                        <Select Id="n61" Terminals="s\?\ t\:f=w55, f=w48, s=w31, t=w52" TopLeft="266 203" />
+                        <Multiply Id="n62" Terminals="x\*y=w35, y=w55, x=w54" TopLeft="308 203" />
+                        <MethodCall Id="n31" Bounds="154 21 56 98" Target="RotationValue\.vix">
+                            <Terminal Id="MotorPort" Direction="Input" Wire="w32" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                            <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                            <Terminal Id="Degrees" Direction="Output" Wire="w34" DataType="Single" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                            <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                        </MethodCall>
+                        <DataAccessor DataItem="TPleft" Id="n33" Bounds="224 21 70 14">
+                            <Terminal Id="Value" Direction="Input" Wire="w34" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="TPright" Id="n37" Bounds="231 266 70 14">
+                            <Terminal Id="Value" Direction="Input" Wire="w36" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="ports" Id="n39" Bounds="84 245 70 14">
+                            <Terminal Id="Value" Direction="Input" Wire="w40" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="Kp" Id="n41" Bounds="84 266 70 14">
+                            <Terminal Id="Value" Direction="Input" Wire="w42" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="portLeft" Id="n15" Bounds="140 140 70 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w32" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <DataAccessor DataItem="portRight" Id="n34" Bounds="140 126 77 14">
+                            <Terminal Id="Numeric" Direction="Input" Wire="w38" Hotspot="0 0.5" Bounds="0 0 77 14" />
+                        </DataAccessor>
+                        <Wire Id="w35" Joints="N(n62:x\*y) N(b34:D44)" />
+                        <Wire Id="w37" Joints="N(n58:x\*y) h(7) v(21) N(b36:D44)" />
+                    </FlatSequence.Frame>
+                    <FlatSequence.Frame Id="D14" Bounds="364 7 630 392">
+                        <WhileLoop Id="n15" Bounds="7 14 602 364" DiagramId="d0">
+                            <WhileLoop.Iteration Id="n1" TopLeft="7 329" />
+                            <WhileLoop.Condition Id="n2" Terminals="Input=w6" TopLeft="567 322" />
+                            <DataAccessor DataItem="Degrees" Id="n15" Bounds="448 329 77 14">
+                                <Terminal Id="Numeric" Direction="Output" Wire="w5" Hotspot="1 0.5" Bounds="0 0 77 14" />
+                            </DataAccessor>
+                            <IsGreaterOrEqual Id="n4" Terminals="x\ \&gt;\=\ y\?=w6, y=w5, x=w22" TopLeft="532 315" />
+                            <Wire Id="w5" Joints="N(n15:Numeric) N(n4:y)" />
+                            <Wire Id="w6" Joints="N(n4:x\ \&gt;\=\ y\?) N(n2:Input)" />
+                            <MethodCall Id="n36" Bounds="105 21 56 98" Target="RotationValue\.vix">
+                                <Terminal Id="MotorPort" Direction="Input" Wire="w9" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                                <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                                <Terminal Id="Degrees" Direction="Output" Wire="w13" DataType="Single" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                                <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                            </MethodCall>
+                            <DataAccessor DataItem="portRight" Id="n8" Bounds="14 21 77 14">
+                                <Terminal Id="Numeric" Direction="Output" Wire="w9" Hotspot="1 0.5" Bounds="0 0 77 14" />
+                            </DataAccessor>
+                            <Wire Id="w9" Joints="N(n8:Numeric) h(7) N(n36:MotorPort) B(1) v(97) h(126) v(-118) h(206) v(14) N(n76:MotorPort)" />
+                            <DataAccessor DataItem="TPright" Id="n10" Bounds="91 7 70 14">
+                                <Terminal Id="Value" Direction="Output" Wire="w12" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                            </DataAccessor>
+                            <Subtract Id="n47" Terminals="x\-y=w32, y=w12, x=w13" TopLeft="189 7" />
+                            <Wire Id="w12" Joints="N(n10:Value) h(7) v(14) N(n47:y)" />
+                            <Wire Id="w13" Joints="N(n36:Degrees) h(14) v(-14) N(n47:x)" />
+                            <Subtract Id="n14" Terminals="x\-y=w31, y=w16, x=w17" TopLeft="196 231" />
+                            <Wire Id="w15" Joints="N(n19:Numeric) h(7) v(105) h(140) v(-175) N(n77:MotorPort) B(1) N(n18:MotorPort)" />
+                            <Wire Id="w16" Joints="N(n20:Value) h(7) v(14) N(n14:y)" />
+                            <Wire Id="w17" Joints="N(n18:Degrees) h(14) v(-14) N(n14:x)" />
+                            <MethodCall Id="n18" Bounds="112 245 56 98" Target="RotationValue\.vix">
+                                <Terminal Id="MotorPort" Direction="Input" Wire="w15" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                                <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                                <Terminal Id="Degrees" Direction="Output" Wire="w17" DataType="Single" Hotspot="1 0.5" Bounds="42 0 14 14" />
+                                <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                            </MethodCall>
+                            <DataAccessor DataItem="portLeft" Id="n19" Bounds="28 245 70 14">
+                                <Terminal Id="Numeric" Direction="Output" Wire="w15" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                            </DataAccessor>
+                            <DataAccessor DataItem="TPleft" Id="n20" Bounds="98 231 70 14">
+                                <Terminal Id="Value" Direction="Output" Wire="w16" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                            </DataAccessor>
+                            <Divide Id="n21" Terminals="x\/y=w22, y=w24, x=w26" TopLeft="476 301" />
+                            <Wire Id="w22" Joints="N(n21:x\/y) h(21) v(7) N(n4:x)" />
+                            <Literal Id="n23" Terminals="Out=w24" Bounds="441 315 28 14" Interpretation="Exact" DataType="Double">2</Literal>
+                            <Wire Id="w24" Joints="N(n23:Out) N(n21:y)" />
+                            <Add Id="n25" Terminals="x\+y=w26, y=w28, x=w30" TopLeft="420 294" />
+                            <Wire Id="w26" Joints="N(n25:x\+y) N(n21:x)" />
+                            <AbsoluteValue Id="n27" Terminals="abs\(x\)=w28, x=w31" TopLeft="385 308" />
+                            <Wire Id="w28" Joints="N(n27:abs\(x\)) N(n25:y)" />
+                            <AbsoluteValue Id="n29" Terminals="abs\(x\)=w30, x=w32" TopLeft="385 294" />
+                            <Wire Id="w30" Joints="N(n29:abs\(x\)) N(n25:x)" />
+                            <Wire Id="w31" Joints="N(n14:x\-y) h(14) v(-21) h(-168) v(-14) N(n33:y) B(1) v(70) N(n27:x)" />
+                            <Wire Id="w32" Joints="N(n47:x\-y) h(14) v(105) v(175) N(n29:x) B(2) h(-161) v(14) N(n17:x)" />
+                            <Multiply Id="n33" Terminals="x\*y=w40, y=w31, x=w60" TopLeft="77 189" />
+                            <Multiply Id="n17" Terminals="x\*y=w41, y=w38, x=w32" TopLeft="77 133" />
+                            <Wire Id="w38" Joints="N(b37:d0) h(23) N(n17:y) B(1) v(-56) h(69) v(32) h(146) v(-39) N(n46:x) B(7) v(-35) N(n48:y) B(6) h(154) v(122) N(n78:x)" />
+                            <Subtract Id="n39" Terminals="x\-y=w43, y=w41, x=w40" TopLeft="133 161" />
+                            <Wire Id="w40" Joints="N(n33:x\*y) h(7) v(-35) N(n39:x)" />
+                            <Wire Id="w41" Joints="N(n17:x\*y) h(21) v(35) N(n39:y)" />
+                            <Multiply Id="n42" Terminals="x\*y=w57, y=w45, x=w43" TopLeft="196 182" />
+                            <Wire Id="w43" Joints="N(n39:x\-y) h(7) v(14) N(n42:x)" />
+                            <DataAccessor DataItem="Kp" Id="n38" Bounds="119 196 70 14">
+                                <Terminal Id="Value" Direction="Output" Wire="w45" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                            </DataAccessor>
+                            <Wire Id="w45" Joints="N(n38:Value) N(n42:y)" />
+                            <AbsoluteValue Id="n46" Terminals="abs\(x\)=w54, x=w38" TopLeft="259 84" />
+                            <Add Id="n48" Terminals="x\+y=w51, y=w38, x=w49" TopLeft="280 35" />
+                            <Literal Id="n49" Terminals="Out=w49" Bounds="245 35 28 14" Interpretation="Exact" DataType="Double">1</Literal>
+                            <Wire Id="w49" Joints="N(n49:Out) N(n48:x)" />
+                            <AbsoluteValue Id="n50" Terminals="abs\(x\)=w53, x=w51" TopLeft="315 42" />
+                            <Wire Id="w51" Joints="N(n48:x\+y) N(n50:x)" />
+                            <Subtract Id="n52" Terminals="x\-y=w56, y=w54, x=w53" TopLeft="308 70" />
+                            <Wire Id="w53" Joints="N(n50:abs\(x\)) h(7) v(14) h(-56) v(14) N(n52:x)" />
+                            <Wire Id="w54" Joints="N(n46:abs\(x\)) N(n52:y)" />
+                            <Multiply Id="n55" Terminals="x\*y=w59, y=w57, x=w56" TopLeft="343 77" />
+                            <Wire Id="w56" Joints="N(n52:x\-y) N(n55:x)" />
+                            <Wire Id="w57" Joints="N(n42:x\*y) h(112) v(-2) v(-96) N(n55:y) B(2) h(21) v(65) N(n74:x)" />
+                            <Add Id="n58" Terminals="x\+y=w74, y=w60, x=w59" TopLeft="385 84" />
+                            <Wire Id="w59" Joints="N(n55:x\*y) N(n58:x)" />
+                            <Wire Id="w60" Joints="N(b33:d0) h(40) v(21) h(201) h(32) h(98) v(-112) N(n58:y) B(4) v(28) N(n70:y) B(3) v(63) N(n69:x) B(1) N(n33:x)" />
+                            <Wire Id="w62" Joints="N(n72:abs\(x\)) h(4) v(14) h(-53) v(14) N(n73:x)" />
+                            <Wire Id="w64" Joints="N(n73:x\-y) N(n74:y)" />
+                            <Wire Id="w65" Joints="N(n71:Out) N(n70:x)" />
+                            <Wire Id="w66" Joints="N(n70:x\+y) N(n72:x)" />
+                            <Wire Id="w67" Joints="N(n69:abs\(x\)) N(n73:y)" />
+                            <AbsoluteValue Id="n69" Terminals="abs\(x\)=w67, x=w60" TopLeft="266 273" />
+                            <Add Id="n70" Terminals="x\+y=w66, y=w60, x=w65" TopLeft="287 224" />
+                            <Literal Id="n71" Terminals="Out=w65" Bounds="252 224 28 14" Interpretation="Exact" DataType="Double">1</Literal>
+                            <AbsoluteValue Id="n72" Terminals="abs\(x\)=w62, x=w66" TopLeft="322 231" />
+                            <Subtract Id="n73" Terminals="x\-y=w64, y=w67, x=w62" TopLeft="315 259" />
+                            <Multiply Id="n74" Terminals="x\*y=w72, y=w64, x=w57" TopLeft="364 252" />
+                            <Wire Id="w72" Joints="N(n74:x\*y) N(n78:y)" />
+                            <MethodCall Id="n76" Bounds="441 14 56 98" Target="RawMotorOn\.vix">
+                                <Terminal Id="MotorPort" Direction="Input" Wire="w9" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                                <Terminal Id="Power" Direction="Input" Wire="w74" DataType="Single" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                                <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                                <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                                <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                            </MethodCall>
+                            <Wire Id="w74" Joints="N(n58:x\+y) h(7) v(-49) N(n76:Power)" />
+                            <MethodCall Id="n77" Bounds="455 175 56 98" Target="RawMotorOn\.vix">
+                                <Terminal Id="MotorPort" Direction="Input" Wire="w15" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                                <Terminal Id="Power" Direction="Input" Wire="w76" DataType="Single" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                                <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                                <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                                <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                            </MethodCall>
+                            <Wire Id="w76" Joints="N(n78:x\-y) h(7) v(-49) N(n77:Power)" />
+                            <Subtract Id="n78" Terminals="x\-y=w76, y=w72, x=w38" TopLeft="406 245" />
+                            <WhileLoop.Tunnel AutoIndex="False" Id="b33" Terminals="n15=w4, d0=w60" TopLeft="0 196" />
+                            <WhileLoop.Tunnel AutoIndex="False" Id="b37" Terminals="n15=w7, d0=w38" TopLeft="0 154" />
+                        </WhileLoop>
+                        <Wire Id="w4" Joints="N(b34:D14) N(b33:n15)" />
+                        <Wire Id="w7" Joints="N(b36:D14) N(b37:n15)" />
+                    </FlatSequence.Frame>
+                    <FlatSequence.Frame Id="D18" Bounds="1001 7 140 392">
+                        <MethodCall Id="n18" Bounds="49 168 56 98" Target="MoveTankStop\.vix">
+                            <Terminal Id="Ports" Direction="Input" Wire="w5" DataType="Single" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                            <Terminal Id="Brake\ At\ End" Direction="Input" Wire="w7" DataType="Boolean" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                            <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 70 14 14" />
+                            <Terminal Id="SequenceIn" Direction="Input" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 84 14 14" />
+                            <Terminal Id="SequenceOut" Direction="Output" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="42 84 14 14" />
+                        </MethodCall>
+                        <DataAccessor DataItem="ports" Id="n38" Bounds="14 133 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w5" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w5" Joints="N(n38:Value) h(7) v(21) h(-56) v(14) N(n18:Ports)" />
+                        <DataAccessor DataItem="Stop" Id="n6" Bounds="35 294 70 14">
+                            <Terminal Id="Value" Direction="Output" Wire="w7" Hotspot="1 0.5" Bounds="0 0 70 14" />
+                        </DataAccessor>
+                        <Wire Id="w7" Joints="N(n6:Value) h(7) v(-28) h(-77) v(-70) N(n18:Brake\ At\ End)" />
+                    </FlatSequence.Frame>
+                    <FlatSequence.Tunnel Id="b34" Terminals="D44=w35, D14=w4" TopLeft="353.5 217" />
+                    <FlatSequence.Tunnel Id="b36" Terminals="D44=w37, D14=w7" TopLeft="353.5 175" />
+                </FlatSequence>
+            </BlockDiagram>
+            <Icon>
+                <Model:IconPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Model="clr-namespace:NationalInstruments.LabVIEW.VI.Design;assembly=NationalInstruments.LabVIEW.VI.SourceModel" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:ation="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="70" Width="56">
+                    <fpruntime:AnimationProperties.Animations>
+                        <fpruntime:AnimationsContainer />
+                    </fpruntime:AnimationProperties.Animations>
+                    <fpruntime:EventProperties.Events>
+                        <fpruntime:EventContainer />
+                    </fpruntime:EventProperties.Events>
+                    <Model:IconPanel.Background>
+                        <ation:LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                            <ation:LinearGradientBrush.Transform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.Transform>
+                            <ation:LinearGradientBrush.RelativeTransform>
+                                <ation:MatrixTransform />
+                            </ation:LinearGradientBrush.RelativeTransform>
+                            <ation:GradientStop Color="#FFF6F5C6" />
+                            <ation:GradientStop Color="#FFFFFFFE" Offset="0.25" />
+                            <ation:GradientStop Color="#FFF6F5C6" Offset="1" />
+                        </ation:LinearGradientBrush>
+                    </Model:IconPanel.Background>
+                    <ation:Rectangle x:Name="Template" Width="NaN" Height="NaN" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 13, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Fill="#00FFFFFF" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:Rectangle>
+                    <ation:Rectangle x:Name="Template2" Width="NaN" Height="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Stroke="#FF000000" StrokeThickness="1" RadiusX="0" RadiusY="0">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                        <ation:Rectangle.Fill>
+                            <ation:LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                <ation:LinearGradientBrush.Transform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.Transform>
+                                <ation:LinearGradientBrush.RelativeTransform>
+                                    <ation:MatrixTransform />
+                                </ation:LinearGradientBrush.RelativeTransform>
+                                <ation:GradientStop Color="#FFFFFFFF" />
+                                <ation:GradientStop Color="#FFD5EAEA" Offset="1" />
+                            </ation:LinearGradientBrush>
+                        </ation:Rectangle.Fill>
+                    </ation:Rectangle>
+                    <ation:TextBlock x:Name="Template3" Width="NaN" Height="NaN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, -0.100000001490116, 0, 0" ation:Grid.Row="0" ation:Grid.Column="0" ation:Grid.RowSpan="1" ation:Grid.ColumnSpan="1" Text="SubVI" FontFamily="Portable User Interface" FontSize="10" FontWeight="Normal" Foreground="#FF000000">
+                        <fpruntime:AnimationProperties.Animations>
+                            <fpruntime:AnimationsContainer />
+                        </fpruntime:AnimationProperties.Animations>
+                        <fpruntime:EventProperties.Events>
+                            <fpruntime:EventContainer />
+                        </fpruntime:EventProperties.Events>
+                    </ation:TextBlock>
+                </Model:IconPanel>
+            </Icon>
+        </VirtualInstrument>
+    </Namespace>
+</SourceFile>
